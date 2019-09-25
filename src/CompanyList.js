@@ -8,29 +8,28 @@ class CompanyList extends React.PureComponent {
     super(props);
     this.state = {
       companies: []
-    }
+    };
     this.searchCompanies = this.searchCompanies.bind(this);
   }
 
   async componentDidMount() {
     let result = await JoblyApi.request('companies');
-    this.setState({ companies: result.companies })
+    this.setState({ companies: result.companies });
   }
 
   async searchCompanies(query) {
-    let result = await JoblyApi.request(`companies/${query}`)
-    console.log(result)
-    // this.setState({ companies: result.companies })
+    let result = await JoblyApi.request(`companies`, {search: query});
+    this.setState({ companies: result.companies });
   }
 
   render() {
-    let companies = this.state.companies.map((c, idx) => <CompanyCard company={c} key={idx}/>)
+    let companies = this.state.companies.map((c, idx) => <CompanyCard company={c} key={idx}/>);
     return (
       <div>
         <SearchBar searchCompanies={this.searchCompanies}/>
         {companies}
       </div>
-    )
+    );
   }
 }
 
