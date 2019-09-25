@@ -5,7 +5,7 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       search: ''
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -18,16 +18,16 @@ class SearchBar extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.searchCompanies(this.state.search);
+    this.props.search(this.state.search);
   }
 
   render() {
     return (
       <form className="form-inline my-4" onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <input className="form-control col-10" type="search" placeholder="Search" aria-label="Search" name="search" />
+        <input className="form-control col-10" type="search" placeholder="Search" aria-label="Search" name="search" value={this.state.search}/>
         <button className="btn btn-primary my-2 my-sm-0 col-2" type="submit">Search</button>
       </form>
-    )
+    );
   }
 }
 

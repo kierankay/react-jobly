@@ -11,12 +11,12 @@ class App extends React.PureComponent {
       <BrowserRouter>
         <div className="main">
           <NavBar />
-          <div className="container">
+          <div className="container my-4">
             <Routes />
           </div>
         </div>
       </BrowserRouter>
-    )
+    );
   }
 }
 
