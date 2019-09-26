@@ -8,6 +8,7 @@ import LoginContainer from './LoginContainer';
 import Profile from './Profile';
 import NavBar from './NavBar';
 import RegisterForm from './RegisterForm';
+import PrivateRoute from './PrivateRoute';
 
 
 class Routes extends React.PureComponent {
@@ -21,10 +22,10 @@ class Routes extends React.PureComponent {
             <Route exact path="/" render={() => <Home />} />
             <Route exact path="/login" render={rtProps => <LoginContainer {...rtProps} />} />
             <Route exact path="/register" render={rtProps => <RegisterForm {...rtProps} />} />
-            <Route exact path="/companies" render={rtProps => <CompanyList /> } />
-            <Route exact path="/companies/:company" render={rtProps => <CompanyDetails company={rtProps.match.params.company}/>} />
-            <Route exact path="/jobs" render={rtProps => <JobList user={this.props.user}/>} />
-            <Route exact path="/profile" render={rtProps => <Profile user={this.props.user}/>} />
+            <PrivateRoute exact path="/companies" component={CompanyList} user={this.props.user}/>
+            <PrivateRoute exact path="/companies/:company" component={CompanyDetails} user={this.props.user} /> 
+            <PrivateRoute exact path="/jobs" component={JobList} user={this.props.user} />
+            <PrivateRoute exact path="/profile" component={Profile} user={this.props.user} />
             <Redirect to="/" />
           </Switch>
         </div>

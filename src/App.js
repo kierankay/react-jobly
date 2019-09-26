@@ -10,25 +10,34 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: ''
+      currentUser: '',
+      infoLoaded: false
     }
   }
 
   async componentDidMount() {
-    if (localStorage.token) {
+    if (localStorage.getItem('token')) {
       let userInfo = await JoblyApi.checkToken(localStorage.token)
-      this.setState({ currentUser: userInfo });
-    } 
+      this.setState({ currentUser: userInfo, infoLoaded: true });
+    } else {
+      this.setState({ currentUser: null, infoLoaded: true })
+    }
+
   }
 
   render() {
+    if (!this.state.infoLoaded) {
+      console.log(this.state.infoLoaded)
+      return "Loading..."
+    }
+
     return (
       <BrowserRouter>
         <div className="main">
           <Routes user={this.state.currentUser} />
         </div>
       </BrowserRouter>
-    );
+    )
   }
 }
 

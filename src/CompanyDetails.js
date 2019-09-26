@@ -12,7 +12,8 @@ class CompanyDetails extends React.Component {
   }
 
   async componentDidMount() {
-    let result = await JoblyApi.getCompany(this.props.company);
+    let result = await JoblyApi.getCompany(this.props.match.params.company);
+    console.log(this.props.match.params.company)
     this.setState({company: result})
   }
 
