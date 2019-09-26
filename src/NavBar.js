@@ -3,6 +3,16 @@ import { NavLink } from "react-router-dom";
 
 
 class NavBar extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.logOut = this.logOut.bind(this);
+  }
+
+  logOut() {
+    localStorage.clear()
+    this.props.history.push('/login')
+  }
+
   render() {
     let loggedIn = localStorage.token ? true : false;
     return (
@@ -12,21 +22,21 @@ class NavBar extends React.PureComponent {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-        {loggedIn ?
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <NavLink className="nav-link" to="/companies">Companies</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/profile">Profile</NavLink>
-            </li>
-            <li className="nav-item">
-             <NavLink className="nav-link" to="/">Logout</NavLink>
-          </li> 
-          </ul> : <ul className="navbar-nav"><li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li></ul>}
+          {loggedIn ?
+            <ul className="navbar-nav">
+              <li className="nav-item active">
+                <NavLink className="nav-link" to="/companies">Companies</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/jobs">Jobs</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/profile">Profile</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="btn btn-primary" to="/" onClick={this.logOut}>Logout</NavLink>
+              </li>
+            </ul> : <ul className="navbar-nav"><li className="nav-item"><NavLink className="btn btn-primary" to="/login">Login</NavLink></li></ul>}
         </div>
       </nav>
     );

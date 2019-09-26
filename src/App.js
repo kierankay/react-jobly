@@ -10,10 +10,7 @@ class App extends React.PureComponent {
     return (
       <BrowserRouter>
         <div className="main">
-          <NavBar />
-          <div className="container my-4">
-            <Routes />
-          </div>
+          <Routes />
         </div>
       </BrowserRouter>
     );

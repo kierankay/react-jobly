@@ -1,6 +1,5 @@
 import React from 'react';
 import JoblyApi from './JoblyApi';
-import { Redirect } from 'react-router-dom';
 
 class LoginContainer extends React.PureComponent {
   constructor(props) {
@@ -23,6 +22,7 @@ class LoginContainer extends React.PureComponent {
     evt.preventDefault();
     let token = await JoblyApi.login(this.state.username, this.state.password);
     localStorage.setItem("token", token.token);
+    this.props.history.push('/')
   }
 
   render() {
