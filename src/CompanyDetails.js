@@ -13,13 +13,12 @@ class CompanyDetails extends React.Component {
 
   async componentDidMount() {
     let result = await JoblyApi.getCompany(this.props.match.params.company);
-    console.log(this.props.match.params.company)
     this.setState({company: result})
   }
 
   render() {
     let jobs = this.state.company.jobs ? 
-      this.state.company.jobs.map(job => <JobCard job={job} key={job.id} />) : 
+      this.state.company.jobs.map(job => <JobCard applyToJob={this.props.applyToJob} checkApplied={this.props.checkApplied} job={job} key={job.id} />) : 
       "Loading...";
     return (
       <div>

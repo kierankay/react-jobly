@@ -23,8 +23,8 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <form className="form-inline my-4" onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <input className="form-control col-10" type="search" placeholder="Search" aria-label="Search" name="search" value={this.state.search}/>
+      <form className="form-inline my-4">
+        <input className="form-control col-10" type="search" placeholder="Search" aria-label="Search" name="search" value={this.state.search} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
         <button className="btn btn-primary my-2 my-sm-0 col-2" type="submit">Search</button>
       </form>
     );

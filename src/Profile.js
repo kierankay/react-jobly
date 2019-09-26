@@ -6,7 +6,7 @@ class Profile extends React.PureComponent {
     return (
       <div>
         <h1>Profile</h1>
-        <ProfileForm />
+        <ProfileForm user={this.props.user} history={this.props.history} updateUser={this.props.updateUser}/>
       </div>
     );
   }

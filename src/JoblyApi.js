@@ -67,8 +67,12 @@ class JoblyApi {
   }
 
   static async editUser(username, password, first_name, last_name, photo_url, email) {
-    let res = await this.request(`users/${username}`, {username, password, first_name, last_name, photo_url, email}, "patch")
+    let res = await this.request(`users/${username}`, {password, first_name, last_name, photo_url, email}, "patch")
     return res;
+  }
+  
+  static async applyToJob(id, state) {
+    let res = await this.request(`jobs/${id}/apply`, {state}, 'post')
   }
 }
 

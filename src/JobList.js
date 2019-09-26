@@ -23,7 +23,7 @@ class JobList extends React.Component {
   }
 
   render() {
-    let jobs = this.state.jobs.map(job => <JobCard job={job} key={job.id} />);
+    let jobs = this.state.jobs.map(job => <JobCard applyToJob={this.props.applyToJob} checkApplied={this.props.checkApplied} job={job} key={job.id} />);
     return (
       <div>
         <SearchBar search={this.searchJobs} />

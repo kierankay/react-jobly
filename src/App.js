@@ -13,6 +13,9 @@ class App extends React.PureComponent {
       currentUser: '',
       infoLoaded: false
     }
+    this.updateUserInfo = this.updateUserInfo.bind(this);
+    this.checkAppliedJob = this.checkAppliedJob.bind(this);
+    this.applyToJob = this.applyToJob.bind(this);
   }
 
   async componentDidMount() {
@@ -25,19 +28,36 @@ class App extends React.PureComponent {
 
   }
 
+  updateUserInfo(user) {
+    this.setState({currentUser: {user: {...this.state.currentUser.user, ...user} } })
+  }
+
+  checkAppliedJob(jobId) {
+    // check if job is in this.state.currentUser.jobs
+    if (this.state.currentUser.user.jobs.filter(job => job.id === jobId).length === 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  async applyToJob(job) {
+    await JoblyApi.applyToJob(job.id)
+    this.setState({currentUser: {user: {...this.state.currentUser.user, jobs: [...this.state.currentUser.user.jobs, job]}} })
+  }
+
   render() {
     if (!this.state.infoLoaded) {
-      console.log(this.state.infoLoaded)
       return "Loading..."
+    } else {
+      return (
+        <BrowserRouter>
+          <div className="main">
+            <Routes user={this.state.currentUser} checkApplied={this.checkAppliedJob} applyToJob={this.applyToJob} updateUser={this.updateUserInfo}/>
+          </div>
+        </BrowserRouter>
+      )
     }
-
-    return (
-      <BrowserRouter>
-        <div className="main">
-          <Routes user={this.state.currentUser} />
-        </div>
-      </BrowserRouter>
-    )
   }
 }
 

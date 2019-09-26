@@ -33,26 +33,26 @@ class RegisterForm extends React.Component {
     return (
       <div>
         <AuthNav />
-        <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label for="username">Username</label>
-            <input type="text" className="form-control" id="username" aria-describedby="username" placeholder="Username" name="username" value={this.state.username} />
+            <input type="text" className="form-control" id="username" aria-describedby="username" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} />
+            <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" className="form-control" id="username" aria-describedby="first name" placeholder="First Name" name="firstName" value={this.state.firstName} />
+            <input type="text" className="form-control" id="username" aria-describedby="first name" placeholder="First Name" name="firstName" value={this.state.firstName} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="username">Last Name</label>
-            <input type="text" className="form-control" id="lastName" aria-describedby="last name" placeholder="LastName" name="lastName" value={this.state.lastName} />
+            <input type="text" className="form-control" id="lastName" aria-describedby="last name" placeholder="LastName" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="username">Email</label>
-            <input type="text" className="form-control" id="email" aria-describedby="email" placeholder="email" name="email" value={this.state.email} />
+            <input type="text" className="form-control" id="email" aria-describedby="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleChange} />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
