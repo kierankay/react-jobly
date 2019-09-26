@@ -7,6 +7,7 @@ import JobList from './JobList';
 import LoginContainer from './LoginContainer';
 import Profile from './Profile';
 import NavBar from './NavBar';
+import RegisterForm from './RegisterForm';
 
 
 class Routes extends React.PureComponent {
@@ -15,17 +16,18 @@ class Routes extends React.PureComponent {
     return (
       <div>
         <Route path="/" render={rtProps => <NavBar {...rtProps} />} />
-        <Switch>
-          <div className="container my-4">
+        <div className="container my-4">
+          <Switch>
             <Route exact path="/" render={() => <Home />} />
-            <Route exact path="/companies" render={rtProps => <CompanyList />} />
-            <Route exact path="/companies/:company" render={rtProps => <CompanyDetails company={rtProps.match.params.company} />} />
-            <Route exact path="/jobs" render={rtProps => <JobList />} />
             <Route exact path="/login" render={rtProps => <LoginContainer {...rtProps} />} />
-            <Route exact path="/profile" render={rtProps => <Profile />} />
+            <Route exact path="/register" render={rtProps => <RegisterForm {...rtProps} />} />
+            <Route exact path="/companies" render={rtProps => <CompanyList /> } />
+            <Route exact path="/companies/:company" render={rtProps => <CompanyDetails company={rtProps.match.params.company}/>} />
+            <Route exact path="/jobs" render={rtProps => <JobList user={this.props.user}/>} />
+            <Route exact path="/profile" render={rtProps => <Profile user={this.props.user}/>} />
             <Redirect to="/" />
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </div>
     );
   }

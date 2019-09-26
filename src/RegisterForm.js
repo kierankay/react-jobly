@@ -2,13 +2,16 @@ import React from 'react';
 import JoblyApi from './JoblyApi';
 import AuthNav from './AuthNav';
 
-class LoginContainer extends React.PureComponent {
+class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
-    }
+      password: '',
+      firstName: '',
+      lastName: '',
+      email: ''
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -21,7 +24,7 @@ class LoginContainer extends React.PureComponent {
 
   async handleSubmit(evt) {
     evt.preventDefault();
-    let token = await JoblyApi.login(this.state.username, this.state.password);
+    let token = await JoblyApi.register(this.state.username, this.state.password, this.state.firstName, this.state.lastName, this.state.email);
     localStorage.setItem("token", token.token);
     this.props.history.push('/')
   }
@@ -39,6 +42,18 @@ class LoginContainer extends React.PureComponent {
             <label for="password">Password</label>
             <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} />
           </div>
+          <div className="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" className="form-control" id="username" aria-describedby="first name" placeholder="First Name" name="firstName" value={this.state.firstName} />
+          </div>
+          <div className="form-group">
+            <label for="username">Last Name</label>
+            <input type="text" className="form-control" id="lastName" aria-describedby="last name" placeholder="LastName" name="lastName" value={this.state.lastName} />
+          </div>
+          <div className="form-group">
+            <label for="username">Email</label>
+            <input type="text" className="form-control" id="email" aria-describedby="email" placeholder="email" name="email" value={this.state.email} />
+          </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
@@ -46,4 +61,4 @@ class LoginContainer extends React.PureComponent {
   }
 }
 
-export default LoginContainer;
+export default RegisterForm;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken'
 
 class JoblyApi {
   static async request(endpoint, paramsOrData = {}, verb = "get") {
@@ -51,6 +52,22 @@ class JoblyApi {
 
   static async login(username, password) {
     let res = await this.request(`login`, {username, password} ,"post");
+    return res;
+  }
+
+  static async register(username, password, first_name, last_name, email) {
+    let res = await this.request('users', {username, password, first_name, last_name, email}, "post");
+    return res;
+  }
+
+  static async checkToken(token) {
+    let username = jwt.decode(token).username
+    let res = await this.request(`users/${username}`)
+    return res;
+  }
+
+  static async editUser(username, password, first_name, last_name, photo_url, email) {
+    let res = await this.request(`users/${username}`, {username, password, first_name, last_name, photo_url, email}, "patch")
     return res;
   }
 }

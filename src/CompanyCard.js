@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class CompanyCard extends React.Component {
   render() {
     let { logo_url, name, description } = this.props.company
     return (
-      <div className="card mb-3" style={{ maxWidth: "800px" }}>
+      <Link to={`/companies/${name}`} className="text-muted"><div className="card mb-3" style={{ maxWidth: "800px" }}>
         <div className="row no-gutters">
           <div className="col-md-2">
             <img src={logo_url} className="card-img" alt="..." />
@@ -17,6 +18,7 @@ class CompanyCard extends React.Component {
           </div>
         </div>
       </div>
+      </Link>
     );
   }
 }
