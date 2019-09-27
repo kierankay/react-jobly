@@ -9,8 +9,7 @@ class NavBar extends React.PureComponent {
   }
 
   logOut() {
-    localStorage.clear()
-    this.props.history.push('/login')
+    localStorage.clear();
   }
 
   render() {
@@ -21,7 +20,7 @@ class NavBar extends React.PureComponent {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           {loggedIn ?
             <ul className="navbar-nav">
               <li className="nav-item active">
@@ -34,7 +33,7 @@ class NavBar extends React.PureComponent {
                 <NavLink className="nav-link" to="/profile">Profile</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="btn btn-primary" to="/" onClick={this.logOut}>Logout</NavLink>
+                <NavLink className="btn btn-primary" to="/login" onClick={this.logOut}>Logout</NavLink>
               </li>
             </ul> : <ul className="navbar-nav"><li className="nav-item"><NavLink className="btn btn-primary" to="/login">Login</NavLink></li></ul>}
         </div>

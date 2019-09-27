@@ -11,7 +11,7 @@ class AuthNav extends React.Component {
 
   render() {
     return (
-      <ul className="nav nav-pills">
+      <ul className="nav nav-pills justify-content-end">
         <li className="nav-item">
           <NavLink className="nav-link" to="/login">Login</NavLink>
         </li>

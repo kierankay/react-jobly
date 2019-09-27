@@ -19,7 +19,7 @@ class Routes extends React.PureComponent {
         <Route path="/" render={rtProps => <NavBar {...rtProps} />} />
         <div className="container my-4">
           <Switch>
-            <Route exact path="/" render={() => <Home />} />
+            <Route exact path="/" render={() => <Home user={this.props.user} />} />
             <Route exact path="/login" render={rtProps => <LoginContainer {...rtProps} />} />
             <Route exact path="/register" render={rtProps => <RegisterForm {...rtProps} />} />
             <PrivateRoute exact path="/companies" component={CompanyList} user={this.props.user}/>

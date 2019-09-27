@@ -48,11 +48,11 @@ class RegisterForm extends React.Component {
           </div>
           <div className="form-group">
             <label for="username">Last Name</label>
-            <input type="text" className="form-control" id="lastName" aria-describedby="last name" placeholder="LastName" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
+            <input type="text" className="form-control" id="lastName" aria-describedby="last name" placeholder="Last Name" name="lastName" value={this.state.lastName} onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label for="username">Email</label>
-            <input type="text" className="form-control" id="email" aria-describedby="email" placeholder="email" name="email" value={this.state.email} onChange={this.handleChange} />
+            <input type="text" className="form-control" id="email" aria-describedby="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>

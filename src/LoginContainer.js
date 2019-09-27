@@ -33,11 +33,22 @@ class LoginContainer extends React.PureComponent {
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="form-control" id="username" aria-describedby="username" placeholder="Username" name="username" value={this.state.username} onChange={this.handleChange}/>
+            <input type="text" className="form-control"
+              id="username"
+              aria-describedby="username"
+              placeholder="Username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange} />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="form-control" id="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+            <input type="password" className="form-control"
+              id="password"
+              placeholder="Password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange} />
           </div>
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
